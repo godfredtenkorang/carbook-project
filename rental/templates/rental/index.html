@@ -1,0 +1,294 @@
+{% extends 'rental/base.html' %}
+{% load static %}
+{% load socialaccount %}
+{% block content %}
+<div class="hero-wrap ftco-degree-bg" style="background-image: url('{% static 'rental/images/bg_2.jpg' %}');"
+    data-stellar-background-ratio="0.5">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text justify-content-start align-items-center justify-content-center">
+            <div class="col-lg-8 ftco-animate">
+                <div class="text w-100 text-center mb-md-5 pb-md-5">
+                    <h1 class="mb-4">Rent a Car or Book a Driver</h1>
+                    <p style="font-size: 18px;">Our seamless online booking platform allows you to reserve premium
+                        cars and professional drivers at your fingertips. Whether it's for business or leisure,
+                        elevate your journey with unparalleled comfort, style, and reliability. Luxury Drive
+                        Transport – where every ride is an indulgence in elegance.</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="ftco-section ftco-no-pt bg-light">
+    <div class="container">
+        <div class="row no-gutters">
+            <div class="col-md-12	featured-top">
+                <div class="row no-gutters">
+                    <div class="col-md-4 d-flex align-items-center">
+                        <form method="POST" class="request-form ftco-animate bg-primary" id="book-a-driver">
+                            {% csrf_token %}
+                            <h2>Need A Driver?</h2>
+                            <div class="form-group">
+                                <label for="" class="label">Pick-up location</label>
+                                <input type="text" name="pick_up_location" class="form-control"
+                                    placeholder="City, Airport, Station, etc">
+                            </div>
+                            <div class="form-group">
+                                <label for="" class="label">Drop-off location</label>
+                                <input type="text" name="drop_off_location" class="form-control"
+                                    placeholder="City, Airport, Station, etc">
+                            </div>
+                            <div class="d-flex">
+                                <div class="form-group mr-2">
+                                    <label for="" class="label">Pick-up date</label>
+                                    <input type="text" name="pick_up_date" class="form-control" id="book_pick_date"
+                                        placeholder="Date">
+                                </div>
+                                <div class="form-group ml-2">
+                                    <label for="" class="label">Drop-off date</label>
+                                    <input type="text" name="drop_off_date" class="form-control" id="book_off_date"
+                                        placeholder="Date">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="" class="label">Pick-up time</label>
+                                <input type="text" name="pick_up_time" class="form-control" id="time_pick"
+                                    placeholder="Time">
+                            </div>
+                            {% if user.is_authenticated %}
+                            <div class="form-group">
+                                <input type="submit" value="Rent A Driver Now" class="btn btn-secondary py-3 px-4">
+                            </div>
+                            {% else %}
+                            <div class="form-group">
+                                <a class="btn btn-secondary py-3 px-4" href="{% provider_login_url 'google' %}?next=/">Login to Rent A
+                                    Driver Now</a>
+                            </div>
+                            {% endif %}
+                        </form>
+                    </div>
+                    <div class="col-md-8 d-flex align-items-center">
+                        
+                        <div class="services-wrap rounded-right w-100">
+
+                                    {% if messages %}
+                                    {% for message in messages %}
+                                    <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+                                    {% endfor %}
+                                    {% endif %}
+ 
+                            <h3 class="heading-section mb-4">Better Way to Rent Your Perfect Cars</h3>
+                            <div class="row d-flex mb-4">
+                                <div class="col-md-4 d-flex align-self-stretch ftco-animate">
+                                    <div class="services w-100 text-center">
+                                        <div class="icon d-flex align-items-center justify-content-center"><span
+                                                class="flaticon-route"></span></div>
+                                        <div class="text w-100">
+                                            <h3 class="heading mb-2">Click on the Cars menu</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 d-flex align-self-stretch ftco-animate">
+                                    <div class="services w-100 text-center">
+                                        <div class="icon d-flex align-items-center justify-content-center"><span
+                                                class="flaticon-handshake"></span></div>
+                                        <div class="text w-100">
+                                            <h3 class="heading mb-2">Select the Best Deal</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 d-flex align-self-stretch ftco-animate">
+                                    <div class="services w-100 text-center">
+                                        <div class="icon d-flex align-items-center justify-content-center"><span
+                                                class="flaticon-rent"></span></div>
+                                        <div class="text w-100">
+                                            <h3 class="heading mb-2">Reserve Your Rental Car</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <p><a href="" class="btn btn-primary py-3 px-4">Reserve Your Perfect Car</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
+
+
+<section class="ftco-section ftco-no-pt bg-light">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-12 heading-section text-center ftco-animate mb-5">
+                <span class="subheading">What we offer</span>
+                <h2 class="mb-2">Featured Vehicles</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="carousel-car owl-carousel">
+                    {% for vehicle in vehicles %}
+                    <div class="item">
+                        <div class="car-wrap rounded ftco-animate">
+                            <div class="img rounded d-flex align-items-end"
+                                style="background-image: url('{{ vehicle.image.url }}');">
+                            </div>
+                            <div class="text">
+                                <h2 class="mb-0"><a href="#">{{ vehicle.name }}</a></h2>
+                                <div class="d-flex mb-3">
+                                    <span class="cat">{{ vehicle.drive_type }}</span>
+                                    <p class="price ml-auto">{{ vehicle.accra_price }} <span>/Accra</span></p>
+                                </div>
+                                <p class="d-flex mb-0 d-block">
+                                    {% if user.is_authenticated %}
+                                    <a href="{% url 'vehicle-books' vehicle.slug %}" class="btn btn-primary py-2 mr-1">Book now</a>
+                                    {% else %}
+                                    <a href="{% provider_login_url 'google' %}?next=/" class="btn btn-primary py-2 mr-1">Login to Book
+                                        now</a>
+                                    {% endif %}
+                                    <a href="#" class="btn btn-primary py-2 mr-1">{{ vehicle.outside_price }}/Outside</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="ftco-section ftco-about">
+    <div class="container">
+        <div class="row no-gutters">
+            <div class="col-md-6 p-md-5 img img-2 d-flex justify-content-center align-items-center"
+                style="background-image: url('{% static 'rental/images/aboutp.jpg' %}');">
+            </div>
+            <div class="col-md-6 wrap-about ftco-animate">
+                <div class="heading-section heading-section-white pl-md-5">
+                    <span class="subheading">About us</span>
+                    <h2 class="mb-4">Welcome to Luxury Drive Transport</h2>
+
+                    <p>Luxury Drive Transport is a premier transportation service specializing in providing high-end
+                        cars and professional chauffeurs for discerning clients. With a focus on luxury, comfort,
+                        and convenience, we cater to individuals and businesses seeking top-notch transportation
+                        solutions. </p>
+                    <p> Our fleet features a selection of prestigious vehicles equipped with cutting-edge amenities,
+                        ensuring a first-class travel experience. Whether you're attending a special event,
+                        conducting business meetings, or simply exploring the city in style, Luxury Drive Transport
+                        offers personalized service tailored to your needs. Book your ride online and indulge in the
+                        ultimate luxury travel experience with us.</p>
+
+
+
+
+
+
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="ftco-section">
+    <div class="container">
+        <div class="row justify-content-center mb-5">
+            <div class="col-md-7 text-center heading-section ftco-animate">
+                <span class="subheading">Services</span>
+                <h2 class="mb-3">Our Services</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="services services-2 w-100 text-center">
+                    <div class="icon d-flex align-items-center justify-content-center"><span
+                            class="flaticon-wedding-car"></span></div>
+                    <div class="text w-100">
+                        <h3 class="heading mb-2">Accra City Drive</h3>
+                        <p>Experience the elegance of Accra with our premier city transport services.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="services services-2 w-100 text-center">
+                    <div class="icon d-flex align-items-center justify-content-center"><span
+                            class="flaticon-transportation"></span></div>
+                    <div class="text w-100">
+                        <h3 class="heading mb-2">Outside Accra Drive</h3>
+                        <p> Enjoy seamless luxury travel beyond Accra with our exclusive transport options.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="services services-2 w-100 text-center">
+                    <div class="icon d-flex align-items-center justify-content-center"><span
+                            class="flaticon-car"></span></div>
+                    <div class="text w-100">
+                        <h3 class="heading mb-2">Airport Transfer</h3>
+                        <p>Arrive in style with our punctual and luxurious airport transfer service.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="services services-2 w-100 text-center">
+                    <div class="icon d-flex align-items-center justify-content-center"><span
+                            class="flaticon-transportation"></span></div>
+                    <div class="text w-100">
+                        <h3 class="heading mb-2">All Events</h3>
+                        <p> Make every occasion unforgettable with our premium event transport solutions.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+
+<section class="ftco-counter ftco-section img bg-light" id="section-counter">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-lg-3 justify-content-center counter-wrap ftco-animate">
+                <div class="block-18">
+                    <div class="text text-border d-flex align-items-center">
+                        <strong class="number" data-number="5">0</strong>
+                        <span>Year <br>Experienced</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 justify-content-center counter-wrap ftco-animate">
+                <div class="block-18">
+                    <div class="text text-border d-flex align-items-center">
+                        <strong class="number" data-number="50">0</strong>
+                        <span>Total <br>Cars</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 justify-content-center counter-wrap ftco-animate">
+                <div class="block-18">
+                    <div class="text text-border d-flex align-items-center">
+                        <strong class="number" data-number="1590">0</strong>
+                        <span>Happy <br>Customers</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3 justify-content-center counter-wrap ftco-animate">
+                <div class="block-18">
+                    <div class="text d-flex align-items-center">
+                        <strong class="number" data-number="1">0</strong>
+                        <span>Total <br>Branches</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

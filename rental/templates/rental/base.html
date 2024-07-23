@@ -1,0 +1,202 @@
+{% load static %}
+{% load socialaccount %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% if title %}
+        <title>Luxury Drive Transport - {{ title }}</title>
+    {% else %}
+        <title>Luxury Drive Transport</title>
+    {% endif %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="{% static 'rental/css/open-iconic-bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'rental/css/animate.css' %}">
+
+    <link rel="stylesheet" href="{% static 'rental/css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'rental/css/owl.theme.default.min.css' %}">
+    <link rel="stylesheet" href="{% static 'rental/css/magnific-popup.css' %}">
+
+    <link rel="stylesheet" href="{% static 'rental/css/aos.css' %}">
+
+    <link rel="stylesheet" href="{% static 'rental/css/ionicons.min.css' %}">
+
+    <link rel="stylesheet" href="{% static 'rental/css/bootstrap-datepicker.css' %}">
+    <link rel="stylesheet" href="{% static 'rental/css/jquery.timepicker.css' %}">
+
+
+    <link rel="stylesheet" href="{% static 'rental/css/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'rental/css/icomoon.css' %}">
+    <link rel="stylesheet" href="{% static 'rental/css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'rental/styles.css' %}">
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'index' %}">Luxury<span>Drive Transport</span></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
+                aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="oi oi-menu"></span> Menu
+            </button>
+
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active"><a href="{% url 'index' %}" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="{% url 'about' %}" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="{% url 'services' %}" class="nav-link">Services</a></li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Cars
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            {% for category in all_categories %}
+                                <a class="dropdown-item" href="{{ category.get_absolute_url }}">{{ category.name | capfirst }}</a>
+                            {% endfor %}
+                            <!-- <a class="dropdown-item" href="van.html">Vans</a>
+                            <a class="dropdown-item" href="luxury.html">Luxury Cars</a>
+                            <a class="dropdown-item" href="saloon_cars.html">Salon Cars</a> -->
+                        </div>
+                    </li>
+
+                    <li class="nav-item"><a href="{% url 'contact' %}" class="nav-link">Contact</a></li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            {% if user.is_authenticated %}
+                                {{ user.username|capfirst }}
+                            {% else %}
+                                Sign Up
+                            {% endif %}
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            {% if user.is_authenticated %}
+                                <a class="dropdown-item" href="logout">Logout</a>
+                            {% else %}
+                                <a class="dropdown-item" href="{% provider_login_url 'google' %}?next=/">Login with Google</a>
+                            {% endif %}
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            </ul>
+        </div>
+        </div>
+    </nav>
+    <!-- END nav -->
+
+    {% block content %}{% endblock %}
+
+    <footer class="ftco-footer ftco-bg-dark ftco-section">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-md">
+                    <div class="ftco-footer-widget mb-4">
+                        <h2 class="ftco-heading-2"><a href="#" class="logo">Luxury<span>Drive Transport</span></a></h2>
+                        <p>Premier transportation service specializing in providing high-end cars and professional
+                            chauffeurs for discerning clients</p>
+                        <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
+                            <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+                            <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+                            <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="ftco-footer-widget mb-4 ml-md-5">
+                        <h2 class="ftco-heading-2">Information</h2>
+                        <ul class="list-unstyled">
+                            <li><a href="{% url 'about' %}" class="py-2 d-block">About</a></li>
+                            <li><a href="{% url 'services' %}" class="py-2 d-block">Services</a></li>
+                            <li><a href="{% url 'terms-and-conditions' %}" class="py-2 d-block">Terms and Conditions</a></li>
+
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="ftco-footer-widget mb-4">
+                        <h2 class="ftco-heading-2">Customer Support</h2>
+                        <ul class="list-unstyled">
+
+                            <li><a href="{% url 'contact' %}" class="py-2 d-block">Contact Us</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="ftco-footer-widget mb-4">
+                        <h2 class="ftco-heading-2">Have a Questions?</h2>
+                        <div class="block-23 mb-3">
+                            <ul>
+                                <li><span class="icon icon-map-marker"></span><span class="text">YOTA BUILDING,
+                                        east Legon, Ghana</span></li>
+                                <li><a href="#"><span class="icon icon-phone"></span><span class="text">+233 53 5385
+                                            143</span></a></li>
+                                <li><a href="#"><span class="icon icon-phone"></span><span class="text">+233 55 8440
+                                            408</span></a></li>
+                                <li><a href="#"><span class="icon icon-phone"></span><span class="text">+233 24 8905
+                                            621</span></a></li>
+                                <li><a href="#"><span class="icon icon-envelope"></span><span
+                                            class="text">Lkwesi702@gmail.com</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+
+                    <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        Copyright &copy;
+                        <script>document.write(new Date().getFullYear());</script> DDT's Tech Solutions
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+    <!-- loader -->
+    <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px">
+            <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" />
+            <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10"
+                stroke="#F96D00" />
+        </svg></div>
+
+
+    <script src="{% static 'rental/js/jquery.min.js' %}"></script>
+    <script src="{% static 'rental/js/jquery-migrate-3.0.1.min.js' %}"></script>
+    <script src="{% static 'rental/js/popper.min.js' %}"></script>
+    <script src="{% static 'rental/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'rental/js/jquery.easing.1.3.js' %}"></script>
+    <script src="{% static 'rental/js/jquery.waypoints.min.js' %}"></script>
+    <script src="{% static 'rental/js/jquery.stellar.min.js' %}"></script>
+    <script src="{% static 'rental/js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'rental/js/jquery.magnific-popup.min.js' %}"></script>
+    <script src="{% static 'rental/js/aos.js' %}"></script>
+    <script src="{% static 'rental/js/jquery.animateNumber.min.js' %}"></script>
+    <script src="{% static 'rental/js/bootstrap-datepicker.js' %}"></script>
+    <script src="{% static 'rental/js/jquery.timepicker.min.js' %}"></script>
+    <script src="{% static 'rental/js/scrollax.min.js' %}"></script>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+    <script src="{% static 'rental/js/google-map.js' %}"></script>
+    <script src="{% static 'rental/js/main.js' %}"></script>
+
+</body>
+
+</html>

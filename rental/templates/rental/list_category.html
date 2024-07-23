@@ -1,0 +1,122 @@
+{% extends 'rental/base.html' %}
+{% load static %}
+{% block content %}
+<section class="hero-wrap hero-wrap-2 js-fullheight"
+    style="background-image: url('{% static 'rental/images/bg_3.jpg' %}');" data-stellar-background-ratio="0.5">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row no-gutters slider-text js-fullheight align-items-end justify-content-start">
+            <div class="col-md-9 ftco-animate pb-5">
+                <p class="breadcrumbs"><span class="mr-2"><a href="{% url 'index' %}">Home <i
+                                class="ion-ios-arrow-forward"></i></a></span> <span>Cars <i
+                            class="ion-ios-arrow-forward"></i></span></p>
+                {% if category %}
+                <h1 class="mb-3 bread">{{category.name}}</h1>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="ftco-section bg-light">
+    <div class="container">
+        <div class="row">
+            {% for vehicle in vehicles %}
+            <div class="col-md-4">
+                <div class="car-wrap rounded ftco-animate">
+                    <div class="img rounded d-flex align-items-end"
+                        style="background-image: url( {{vehicle.image.url}} );">
+                    </div>
+                    <div class="text">
+                        <h2 class="mb-0"><a href="">{{ vehicle.name }}</a></h2>
+                        <div class="d-flex mb-3">
+                            <span class="cat">{{ vehicle.drive_type }}</span>
+                            <p class="price ml-auto">{{ vehicle.accra_price }} <span>/Accra</span></p>
+                        </div>
+                        <p class="d-flex mb-0 d-block">
+
+                            <a href="{% url 'vehicle-book' vehicle.slug %}"
+                                class="btn btn-primary py-2 mr-1">Book now</a>
+
+                                <a href="#" class="btn btn-primary py-2 mr-1">{{vehicle.outside_price }}/Outside</a></a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            <!-- <div class="col-md-4">
+                    <div class="car-wrap rounded ftco-animate">
+                        <div class="img rounded d-flex align-items-end"
+                            style="background-image: url(images/E\ class.jpeg);">
+                        </div>
+                        <div class="text">
+                            <h2 class="mb-0"><a href="luxury_forms.html">Mercedes E Class </a></h2>
+                            <div class="d-flex mb-3">
+                                <span class="cat">With a Driver</span>
+                                <p class="price ml-auto">$550 <span>/Accra</span></p>
+                            </div>
+                            <p class="d-flex mb-0 d-block"><a href="luxury_forms.html"
+                                    class="btn btn-primary py-2 mr-1">Book now</a><a href="#" class="">$650/Outside</a></a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="car-wrap rounded ftco-animate">
+                        <div class="img rounded d-flex align-items-end"
+                            style="background-image: url(images/C\ Class.jpeg);">
+                        </div>
+                        <div class="text">
+                            <h2 class="mb-0"><a href="luxury_forms.html">Mercedes C Class </a></h2>
+                            <div class="d-flex mb-3">
+                                <span class="cat">With a Driver</span>
+                                <p class="price ml-auto">$450 <span>/Accra</span></p>
+                            </div>
+                            <p class="d-flex mb-0 d-block"><a href="luxury_forms.html"
+                                    class="btn btn-primary py-2 mr-1">Book now</a><a href="#" class="">$550/Outside</a></a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="col-md-4">
+                    <div class="car-wrap rounded ftco-animate">
+                        <div class="img rounded d-flex align-items-end" style="background-image: url(images/range.jpeg);">
+                        </div>
+                        <div class="text">
+                            <h2 class="mb-0"><a href="luxury_forms.html">Range Rover Sports </a></h2>
+                            <div class="d-flex mb-3">
+                                <span class="cat">With a Driver</span>
+                                <p class="price ml-auto">$850 <span>/Accra</span></p>
+                            </div>
+                            <p class="d-flex mb-0 d-block"><a href="luxury_forms.html"
+                                    class="btn btn-primary py-2 mr-1">Book now</a><a href="#" class="">$950/Outside</a></a>
+                            </p>
+                        </div>
+                    </div>
+                </div> -->
+        </div>
+    </div>
+</section>
+```
+
+
+</div>
+<div class="row mt-5">
+    <div class="col text-center">
+        <div class="block-27">
+            <ul>
+                <li><a href="#">&lt;</a></li>
+                <li class="active"><span>1</span></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li><a href="#">&gt;</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+</div>
+</section>
+{% endblock %}
