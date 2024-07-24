@@ -29,7 +29,7 @@ def book_vehicle(request, vehicle_slug):
                 fail_silently=False,
         ),
         
-        messages.success(request, 'Your form as been sent successfully! You will here from us soon...')
+        messages.success(request, 'Your form as been sent successfully! You will hear from us soon...')
         return render(request, 'booking/vehicle_book.html', {'title': 'Book'})
     return render(request, 'booking/vehicle_book.html', {'title': 'Book'})
 
@@ -57,6 +57,6 @@ def books_vehicle(request, featured_slug):
         ),
         
         
-        messages.success(request, 'Your form as been sent successfully! You will here from us soon...')
+        messages.success(request, 'Your form as been sent successfully! You will hear from us soon...')
         return render(request, 'booking/vehicle_books.html', {'title': 'Book'})
     return render(request, 'booking/vehicle_books.html', {'title': 'Book'})

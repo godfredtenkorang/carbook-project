@@ -19,15 +19,6 @@
         </div>
     </div>
 </div>
-<div class="row">
-    <div class="col-md-12">
-        {% if messages %}
-        {% for message in messages %}
-        <div class="alert alert-{{ message.tags }}">{{ message }}</div>
-        {% endfor %}
-        {% endif %}
-    </div>
-</div>
 <section class="ftco-section ftco-no-pt bg-light">
     <div class="container">
         <div class="row no-gutters">
@@ -35,6 +26,11 @@
                 <div class="row no-gutters">
                     <div class="col-md-8 d-flex align-items-center">
                         <div class="services-wrap rounded-right w-100">
+                            {% if messages %}
+                            {% for message in messages %}
+                            <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+                            {% endfor %}
+                            {% endif %}
                             <h3 class="heading-section mb-4">Better Way to Rent Your Perfect Cars</h3>
                             <div class="row d-flex mb-4">
                                 <div class="col-md-4 d-flex align-self-stretch ftco-animate">
