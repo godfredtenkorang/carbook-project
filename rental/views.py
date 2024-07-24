@@ -25,7 +25,7 @@ def index(request):
                 [settings.EMAIL_HOST_USER],  # To email
                 fail_silently=False,
         ),
-        messages.success(request, 'Your form as been sent successfully! You will here from us soon...')
+        messages.success(request, 'Your form has been sent successfully! You will here from us soon...')
         return redirect('index')
     vehicles = FeaturedCarForRent.objects.all()
     context = {
