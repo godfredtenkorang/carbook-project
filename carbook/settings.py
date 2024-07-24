@@ -30,7 +30,7 @@ DEBUG = config('DEBUG', cast=bool)
 
 ALLOWED_HOSTS = ['godfred10.pythonanywhere.com', '127.0.0.1']
 
-SITE_ID = 1
+SITE_ID = 3
 
 # Application definition
 
