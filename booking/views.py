@@ -23,7 +23,7 @@ def book_vehicle(request, vehicle_slug):
         
         send_mail(
             f"New Booking Submission from {email}",
-            f'Message:{pick_up_location} \n {drop_off_location} \n {pick_up_date} \n {drop_off_date} \n From {phone} - {email}',
+            f'Pick up location: {pick_up_location} \n\n Drop off location: {drop_off_location} \n\n Pick up date: {pick_up_date} \n\n Drop off date: {drop_off_date} \n\n Location: {location} \n\n Phone number:{phone} \n\n Email: {email}',
             email,  # From email
                 [settings.EMAIL_HOST_USER],  # To email
                 fail_silently=False,
@@ -50,7 +50,7 @@ def books_vehicle(request, featured_slug):
         
         send_mail(
             f"New Booking Submission from {email}",
-            f'Message:{pick_up_location} \n {drop_off_location} \n {pick_up_date} \n {drop_off_date} \n From {phone} - {email}',
+            f'Pick up location: {pick_up_location} \n\n Drop off location: {drop_off_location} \n\n Pick up date: {pick_up_date} \n\n Drop off date: {drop_off_date} \n\n Location: {location} \n\n Phone number:{phone} \n\n Email: {email}',
             email,  # From email
                 [settings.EMAIL_HOST_USER],  # To email
                 fail_silently=False,

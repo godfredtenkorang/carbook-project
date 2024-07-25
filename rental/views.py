@@ -9,23 +9,25 @@ from django.core.mail import send_mail
 def index(request):
     user = request.user
     if request.method == 'POST':
+        email = request.POST['email']
+        phone = request.POST['phone']
         pick_up_location = request.POST['pick_up_location']
         drop_off_location = request.POST['drop_off_location']
         pick_up_date = request.POST['pick_up_date']
         drop_off_date = request.POST['drop_off_date']
         pick_up_time= request.POST['pick_up_time']
         
-        drivers = NeedADriver(user=user, pick_up_location=pick_up_location, drop_off_location=drop_off_location, pick_up_date=pick_up_date, drop_off_date=drop_off_date, pick_up_time=pick_up_time)
+        drivers = NeedADriver(user=user, email=email, phone=phone, pick_up_location=pick_up_location, drop_off_location=drop_off_location, pick_up_date=pick_up_date, drop_off_date=drop_off_date, pick_up_time=pick_up_time)
         drivers.save()
         
         send_mail(
             f"New Booking for a Driver Submission from {user.username}",
-            f'Message:{pick_up_location} \n {drop_off_location} \n {pick_up_date} \n {drop_off_date}',
-            user.email,  # From email
+            f'Pick up location: {pick_up_location} \n\n Drop off location: {drop_off_location} \n\n Pick up date: {pick_up_date} \n\n Drop off date: {drop_off_date} \n\n Email: {email} \n\n Phone: {phone}',
+            email,  # From email
                 [settings.EMAIL_HOST_USER],  # To email
                 fail_silently=False,
         ),
-        messages.success(request, 'Your form has been sent successfully! You will here from us soon...')
+        messages.success(request, 'Your form has been sent successfully! You will hear from us soon...')
         return redirect('index')
     vehicles = FeaturedCarForRent.objects.all()
     context = {
@@ -60,15 +62,16 @@ def contact(request):
     if request.method == 'POST':
         fullname = request.POST['fullname']
         email = request.POST['email']
+        phone = request.POST['phone']
         subject = request.POST['subject']
         message = request.POST['message']
-        contacts = Contact(fullname=fullname, email=email, subject=subject, message=message)
+        contacts = Contact(fullname=fullname, email=email, phone=phone, subject=subject, message=message)
         contacts.save()
         messages.success(request, 'Your form has been sent successfully!')
         
         send_mail(
-            f"New Form Submission from {fullname}",
-            f'Message:{subject} \n {message} \n From {email}',
+            f"New Contact Form Submission from {fullname}",
+            f'Subject: {subject} \n\n Message: {message} \n\n Email: {email} \n\n Phone: {phone}',
             email,  # From email
                 [settings.EMAIL_HOST_USER],  # To email
                 fail_silently=False,
