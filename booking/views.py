@@ -30,8 +30,9 @@ def book_vehicle(request, vehicle_slug):
         ),
         
         messages.success(request, 'Your form has been sent successfully! You will hear from us soon...')
-        return render(request, 'booking/vehicle_book.html', {'title': 'Book'})
-    return render(request, 'booking/vehicle_book.html', {'title': 'Book'})
+
+        return render(request, 'booking/vehicle_book.html', {'title': 'Book','vehicle':vehicle,})
+    return render(request, 'booking/vehicle_book.html', {'title': 'Book','vehicle':vehicle,})
 
 def books_vehicle(request, featured_slug):
     vehicle = get_object_or_404(FeaturedCarForRent, slug=featured_slug)
@@ -58,5 +59,5 @@ def books_vehicle(request, featured_slug):
         
         
         messages.success(request, 'Your form has been sent successfully! You will hear from us soon...')
-        return render(request, 'booking/vehicle_books.html', {'title': 'Book'})
-    return render(request, 'booking/vehicle_books.html', {'title': 'Book'})
+        return render(request, 'booking/vehicle_books.html', {'title': 'Book','vehicle':vehicle,})
+    return render(request, 'booking/vehicle_books.html', {'title': 'Book','vehicle':vehicle,})

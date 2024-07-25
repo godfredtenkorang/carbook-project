@@ -143,20 +143,20 @@
                             <div class="img rounded d-flex align-items-end"
                                 style="background-image: url('{{ vehicle.image.url }}');">
                             </div>
-                            <div class="text">
+                            <div class="text text-center">
                                 <h2 class="mb-0"><a href="#">{{ vehicle.name }}</a></h2>
-                                <div class="d-flex mb-3">
-                                    <span class="cat">{{ vehicle.drive_type }}</span>
+                                <!-- <div class="d-flex mb-3"> -->
+                                    <!-- <span class="cat">{{ vehicle.drive_type }}</span>
                                     <p class="price ml-auto">{{ vehicle.accra_price }} <span>/Accra</span></p>
-                                </div>
-                                <p class="d-flex mb-0 d-block">
+                                </div> -->
+                                <br>
+                                <p class="mb-0 text-center">
                                     {% if user.is_authenticated %}
                                     <a href="{% url 'vehicle-books' vehicle.slug %}" class="btn btn-primary py-2 mr-1">Book now</a>
                                     {% else %}
                                     <a href="{% provider_login_url 'google' %}?next=/" class="btn btn-primary py-2 mr-1">Login to Book
                                         now</a>
                                     {% endif %}
-                                    <a href="#" class="btn btn-primary py-2 mr-1">{{ vehicle.outside_price }}/Outside</a>
                                 </p>
                             </div>
                         </div>
