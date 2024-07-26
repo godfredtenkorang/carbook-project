@@ -19,6 +19,15 @@
         </div>
     </div>
 </div>
+<div class="row">
+    <div class="col-md-12">
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+        {% endfor %}
+        {% endif %}
+    </div>
+</div>
 <section class="ftco-section ftco-no-pt bg-light">
     <div class="container">
         <div class="row no-gutters">
@@ -26,42 +35,40 @@
                 <div class="row no-gutters">
                     <div class="col-md-8 d-flex align-items-center">
                         <div class="services-wrap rounded-right w-100">
-                            {% if messages %}
-                            {% for message in messages %}
-                            <div class="alert alert-{{ message.tags }}">{{ message }}</div>
-                            {% endfor %}
-                            {% endif %}
                             <h3 class="heading-section mb-4">{{ vehicle.name }} Details</h3>
                             <div class="row d-flex mb-4">
                                 <div class="col-md-4 d-flex align-self-stretch ftco-animate">
                                     <div class="services w-100 text-center">
-                                        <div class="icon d-flex align-items-center justify-content-center"><span
-                                                class="flaticon-route"></span></div>
+                                        <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-route"></span></div>
                                         <div class="text w-100">
-                                            <h3 class="heading mb-2">{{ vehicle.engine_type }}</h3>
+                                            <h3 class="heading mb-2">{{ vehicle.drive_type }}</h3>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-4 d-flex align-self-stretch ftco-animate">
                                     <div class="services w-100 text-center">
-                                        <div class="icon d-flex align-items-center justify-content-center"><span
-                                                class="flaticon-handshake"></span></div>
+                                        <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-rent"></span></div>
                                         <div class="text w-100">
-                                            <h3 class="heading mb-2">{{ vehicle.seater }}</h3>
+                                            <h3 class="heading mb-2">{{ vehicle.accra_price }}</h3>
+                                            <p class="description text-center">Within Accra</p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-4 d-flex align-self-stretch ftco-animate">
                                     <div class="services w-100 text-center">
-                                        <div class="icon d-flex align-items-center justify-content-center"><span
-                                                class="flaticon-rent"></span></div>
+                                        <div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-rent"></span></div>
                                         <div class="text w-100">
-                                            <h3 class="heading mb-2">{{ vehicle.car_model }}</h3>
+                                            <h3 class="heading mb-2">{{ vehicle.outside_price }}</h3>
+                                            <p class="description text-center">Outside Accra</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <!-- <p><a href="" class="btn btn-primary py-3 px-4">Reserve Your Perfect Car</a></p> -->
+                                          
+                            <p class="text-center">
+                                <a href="" class="btn btn-primary py-3 px-4">Reserve Your Perfect Car</a>
+                            </p>
+                            
                         </div>
                     </div>
                     <div class="col-md-4 d-flex align-items-center">
@@ -85,17 +92,7 @@
                                 <label for="" class="label">Drop-off location</label>
                                 <input type="text" name="drop_off_location" class="form-control" placeholder="City, Airport, Station, etc">
                             </div>
-                            <div class="form-group">
-                                <label for="" class="label">Car Type</label>
-                                <select name="car_type" class="form-control">
-                                    <option value="">Select Car Type</option>
-                                    <option value="luxury">Mercedes S Class</option>
-                                    <option value="luxury">Mercedes E Class</option>
-                                    <option value="luxury">Mercedes C Class</option>
-                                    <option value="luxury">Range Rover Sports</option>
-
-                                </select>
-                            </div>
+                          
                             <div class="form-group">
                                 <label for="" class="label">Location</label>
                                 <select name="location" class="form-control">
