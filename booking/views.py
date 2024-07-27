@@ -17,7 +17,7 @@ def book_vehicle(request, vehicle_slug):
         pick_up_date = request.POST['pick_up_date']
         drop_off_date = request.POST['drop_off_date']
         pick_up_time = request.POST['pick_up_time']
-        booking = Booking(vehicle=vehicle, email=email, phone=phone, pick_up_location=pick_up_location, drop_off_location=drop_off_location, car_type=car_type, location=location, pick_up_date=pick_up_date, drop_off_date=drop_off_date, pick_up_time=pick_up_time)
+        booking = Booking(vehicle=vehicle, email=email, phone=phone, pick_up_location=pick_up_location, drop_off_location=drop_off_location, location=location, pick_up_date=pick_up_date, drop_off_date=drop_off_date, pick_up_time=pick_up_time)
         booking.save()
         
         send_mail(
@@ -44,7 +44,7 @@ def books_vehicle(request, featured_slug):
         pick_up_date = request.POST['pick_up_date']
         drop_off_date = request.POST['drop_off_date']
         pick_up_time = request.POST['pick_up_time']
-        booking = FeaturedBooking(vehicle=vehicle, email=email, phone=phone, pick_up_location=pick_up_location, drop_off_location=drop_off_location, car_type=car_type, location=location, pick_up_date=pick_up_date, drop_off_date=drop_off_date, pick_up_time=pick_up_time)
+        booking = FeaturedBooking(vehicle=vehicle, email=email, phone=phone, pick_up_location=pick_up_location, drop_off_location=drop_off_location, location=location, pick_up_date=pick_up_date, drop_off_date=drop_off_date, pick_up_time=pick_up_time)
         booking.save()
         
         send_mail(
