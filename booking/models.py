@@ -28,6 +28,7 @@ class FeaturedBooking(models.Model):
     phone = models.CharField(max_length=15, null=True)
     pick_up_location = models.CharField(max_length=100)
     drop_off_location = models.CharField(max_length=100)
+    location = models.CharField(max_length=100, null=True)
     pick_up_date = models.CharField(max_length=20, null=True, blank=True)
     drop_off_date = models.CharField(max_length=20, null=True, blank=True)
     pick_up_time = models.CharField(max_length=20, null=True)
