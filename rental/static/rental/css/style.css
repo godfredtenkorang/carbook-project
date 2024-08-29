@@ -1305,7 +1305,7 @@ pre {
   .order-xl-12 {
     -webkit-box-ordinal-group: 13;
     -ms-flex-order: 12;
-    order: 12; }
+    order: 3; }
   .offset-xl-0 {
     margin-left: 0; }
   .offset-xl-1 {
