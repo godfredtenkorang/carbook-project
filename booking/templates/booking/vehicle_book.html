@@ -44,7 +44,8 @@
                             <div class="row d-flex mb-4">
                                 <div class="col-md-4 d-flex align-self-stretch ftco-animate">
                                     <div class="services w-100 text-center">
-                                        <div class="icon d-flex align-items-center justify-content-center"><span style="color: #ffd700;" class="flaticon-route"></span></div>
+                                        <div class="icon d-flex align-items-center justify-content-center"><span
+                                                style="color: #009048;" class="flaticon-route"></span></div>
                                         <div class="text w-100">
                                             <p class="description text-center">Drive Type</p>
                                             <h3 class="heading mb-2">{{ vehicle.drive_type }}</h3>
@@ -53,7 +54,8 @@
                                 </div>
                                 <div class="col-md-4 d-flex align-self-stretch ftco-animate">
                                     <div class="services w-100 text-center">
-                                        <div class="icon d-flex align-items-center justify-content-center"><span style="color: #ffd700;" class="flaticon-rent"></span></div>
+                                        <div class="icon d-flex align-items-center justify-content-center"><span
+                                                style="color: #009048;" class="flaticon-rent"></span></div>
                                         <div class="text w-100">
                                             <p class="description text-center">Within Accra</p>
                                             <h3 class="heading mb-2">{{ vehicle.accra_price }}</h3>
@@ -62,30 +64,27 @@
                                 </div>
                                 <div class="col-md-4 d-flex align-self-stretch ftco-animate">
                                     <div class="services w-100 text-center">
-                                        <div class="icon d-flex align-items-center justify-content-center"><span style="color: #ffd700;" class="flaticon-rent"></span></div>
+                                        <div class="icon d-flex align-items-center justify-content-center"><span
+                                                style="color: #009048;" class="flaticon-rent"></span></div>
                                         <div class="text w-100">
                                             <p class="description text-center">Outside Accra</p>
                                             <h3 class="heading mb-2">{{ vehicle.outside_price }}</h3>
                                         </div>
                                     </div>
                                 </div>
-                                
-                                
-                                
+
+
+
                             </div>
-                                          
+
                             <p class="text-center">
-                                <p>{{ vehicle.description }}</p>
+                            <p>{{ vehicle.description }}</p>
                             </p>
-                            
+
                         </div>
                     </div>
                     <div class="col-md-4 d-flex align-items-center">
-<<<<<<< HEAD
-                        <form method="POST" class="request-form ftco-animate bg-primary" 
-=======
                         <form method="POST" class="request-form ftco-animate" style="background-color: #000;"
->>>>>>> 7c6ce441d37275f30de2e81c3529c94ef9d835f6
                             id="book-a-driver">
                             {% csrf_token %}
                             <h2>Book Car Now</h2>
@@ -99,13 +98,15 @@
                             </div>
                             <div class="form-group">
                                 <label for="" class="label">Pick-up location</label>
-                                <input type="text" name="pick_up_location" class="form-control" placeholder="City, Airport, Station, etc">
+                                <input type="text" name="pick_up_location" class="form-control"
+                                    placeholder="City, Airport, Station, etc">
                             </div>
                             <div class="form-group">
                                 <label for="" class="label">Drop-off location</label>
-                                <input type="text" name="drop_off_location" class="form-control" placeholder="City, Airport, Station, etc">
+                                <input type="text" name="drop_off_location" class="form-control"
+                                    placeholder="City, Airport, Station, etc">
                             </div>
-                          
+
                             <div class="form-group">
                                 <label for="" class="label">Location</label>
                                 <select name="location" class="form-control">
@@ -124,19 +125,23 @@
                             <div class="d-flex">
                                 <div class="form-group mr-2">
                                     <label for="" class="label">Pick-up date</label>
-                                    <input type="text" name="pick_up_date" class="form-control" id="book_pick_date" placeholder="Date">
+                                    <input type="text" name="pick_up_date" class="form-control" id="book_pick_date"
+                                        placeholder="Date">
                                 </div>
                                 <div class="form-group ml-2">
                                     <label for="" class="label">Drop-off date</label>
-                                    <input type="text" name="drop_off_date" class="form-control" id="book_off_date" placeholder="Date">
+                                    <input type="text" name="drop_off_date" class="form-control" id="book_off_date"
+                                        placeholder="Date">
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="" class="label">Pick-up time</label>
-                                <input type="text" name="pick_up_time" class="form-control" id="time_pick" placeholder="Time">
+                                <input type="text" name="pick_up_time" class="form-control" id="time_pick"
+                                    placeholder="Time">
                             </div>
                             <div class="form-group">
-                                <input type="submit" value="Rent Car Now" class="btn py-3 px-4" style="background-color: #fff;">
+                                <input type="submit" value="Rent Car Now" class="btn py-3 px-4"
+                                    style="background-color: #fff;">
                             </div>
                         </form>
                     </div>
@@ -155,14 +160,14 @@
     <div class="container">
         <div class="row justify-content-center mb-5">
             <div class="col-md-7 text-center heading-section ftco-animate">
-                <span class="subheading">Services</span>
+                <span class="subheading" style="color: #009048;">Services</span>
                 <h2 class="mb-3">Our Services</h2>
             </div>
         </div>
         <div class="row">
             <div class="col-md-3">
                 <div class="services services-2 w-100 text-center">
-                    <div class="icon d-flex align-items-center justify-content-center"><span
+                    <div class="icon d-flex align-items-center justify-content-center" style="background-color:#009048;"><span
                             class="flaticon-car"></span></div>
                     <div class="text w-100">
                         <h3 class="heading mb-2">Accra City Drive</h3>
@@ -172,7 +177,7 @@
             </div>
             <div class="col-md-3">
                 <div class="services services-2 w-100 text-center">
-                    <div class="icon d-flex align-items-center justify-content-center"><span
+                    <div class="icon d-flex align-items-center justify-content-center" style="background-color:#009048;"><span
                             class="flaticon-car"></span></div>
                     <div class="text w-100">
                         <h3 class="heading mb-2">Outside Accra Drive</h3>
@@ -182,7 +187,7 @@
             </div>
             <div class="col-md-3">
                 <div class="services services-2 w-100 text-center">
-                    <div class="icon d-flex align-items-center justify-content-center"><span
+                    <div class="icon d-flex align-items-center justify-content-center" style="background-color:#009048;"><span
                             class="flaticon-car"></span></div>
                     <div class="text w-100">
                         <h3 class="heading mb-2">Airport Transfer</h3>
@@ -192,7 +197,7 @@
             </div>
             <div class="col-md-3">
                 <div class="services services-2 w-100 text-center">
-                    <div class="icon d-flex align-items-center justify-content-center"><span
+                    <div class="icon d-flex align-items-center justify-content-center" style="background-color:#009048;"><span
                             class="flaticon-car"></span></div>
                     <div class="text w-100">
                         <h3 class="heading mb-2">All Events</h3>

@@ -34,9 +34,9 @@
                         <p class="mb-0 text-center">
                             {% if user.is_authenticated %}
                             <a href="{% url 'vehicle-book' vehicle.slug %}"
-                                class="btn btn-primary py-2 mr-1 ">Book now</a>
+                                class="btn py-2 mr-1 " style="background-color: #009048; color:#fff;">Book now</a>
                             {% else %}
-                            <a href="{% provider_login_url 'google' %}?next=/" class="btn btn-primary py-2 mr-1">Login to Book
+                            <a href="{% provider_login_url 'google' %}?next=/" class="btn py-2 mr-1" style="background-color: #009048; color:#fff;">Login to Book
                                 now</a>
                             {% endif %}
                         </p>
