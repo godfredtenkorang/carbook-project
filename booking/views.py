@@ -22,7 +22,7 @@ def book_vehicle(request, vehicle_slug):
         
         send_mail(
             f"New Booking Submission from {email}",
-            f'Pick up location: {pick_up_location} \n\n Drop off location: {drop_off_location} \n\n Pick up date: {pick_up_date} \n\n Drop off date: {drop_off_date} \n\n Location: {location} \n\n Phone number:{phone} \n\n Email: {email}',
+            f'Pick up location: {pick_up_location} \n\n Drop off location: {drop_off_location} \n\n Pick up date: {pick_up_date} \n\n Drop off date: {drop_off_date} \n\n Location: {location} \n\n Phone number:{phone} \n\n Email: {email} \n\n Vehicle: {vehicle.name}',
             email,  # From email
                 [settings.EMAIL_HOST_USER],  # To email
                 fail_silently=False,
@@ -49,7 +49,7 @@ def books_vehicle(request, featured_slug):
         
         send_mail(
             f"New Booking Submission from {email}",
-            f'Pick up location: {pick_up_location} \n\n Drop off location: {drop_off_location} \n\n Pick up date: {pick_up_date} \n\n Drop off date: {drop_off_date} \n\n Location: {location} \n\n Phone number:{phone} \n\n Email: {email}',
+            f'Pick up location: {pick_up_location} \n\n Drop off location: {drop_off_location} \n\n Pick up date: {pick_up_date} \n\n Drop off date: {drop_off_date} \n\n Location: {location} \n\n Phone number:{phone} \n\n Email: {email} \n\n Vehicle: {vehicle.name}',
             email,  # From email
                 [settings.EMAIL_HOST_USER],  # To email
                 fail_silently=False,
