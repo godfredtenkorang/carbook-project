@@ -31,48 +31,48 @@
                             <h2>Need A Driver?</h2>
                             <div class="form-group">
                                 <label for="" class="label">Email</label>
-                                <input type="text" name="email" class="form-control" placeholder="someone@example.com">
+                                <input type="text" name="email" class="form-control" placeholder="someone@example.com" required>
                             </div>
                             <div class="form-group">
                                 <label for="" class="label">Phone</label>
-                                <input type="text" name="phone" class="form-control" placeholder="+233 000 000 000">
+                                <input type="text" name="phone" class="form-control" placeholder="+233 000 000 000" required>
                             </div>
                             <div class="form-group">
                                 <label for="" class="label">Pick-up location</label>
                                 <input type="text" name="pick_up_location" class="form-control"
-                                    placeholder="City, Airport, Station, etc">
+                                    placeholder="City, Airport, Station, etc" required>
                             </div>
                             <div class="form-group">
                                 <label for="" class="label">Drop-off location</label>
                                 <input type="text" name="drop_off_location" class="form-control"
-                                    placeholder="City, Airport, Station, etc">
+                                    placeholder="City, Airport, Station, etc" required>
                             </div>
                             <div class="d-flex">
                                 <div class="form-group mr-2">
                                     <label for="" class="label">Pick-up date</label>
                                     <input type="text" name="pick_up_date" class="form-control" id="book_pick_date"
-                                        placeholder="Date">
+                                        placeholder="Date" required>
                                 </div>
                                 <div class="form-group ml-2">
                                     <label for="" class="label">Drop-off date</label>
                                     <input type="text" name="drop_off_date" class="form-control" id="book_off_date"
-                                        placeholder="Date">
+                                        placeholder="Date" required>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="" class="label">Pick-up time</label>
                                 <input type="text" name="pick_up_time" class="form-control" id="time_pick"
-                                    placeholder="Time">
+                                    placeholder="Time" required>
                             </div>
                             {% if user.is_authenticated %}
                             <div class="form-group">
-                                <input type="submit" value="Rent A Driver Now" class="btn  py-3 px-4"
+                                <input type="submit" value="Book A Driver Now" class="btn  py-3 px-4"
                                     style="background-color: #fff;">
                             </div>
                             {% else %}
                             <div class="form-group">
                                 <a class="btn  py-3 px-4" style="background-color: #fff;"
-                                    href="{% provider_login_url 'google' %}?next=/">Login to Rent A
+                                    href="{% provider_login_url 'google' %}?next=/">Login to Book A
                                     Driver Now</a>
                             </div>
                             {% endif %}
